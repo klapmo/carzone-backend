@@ -22,7 +22,7 @@ db = SQLAlchemy(app)
 
 ma = Marshmallow(app)
 
-# Create Product Model
+# Create Car Model
 
 class Car(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -73,5 +73,3 @@ class ReviewSchema(ma.Schema): # ma is Marshmallow instantiation as seen above
 
 review_schema = ReviewSchema(strict=True) # strict = True is to avoid warnings in console
 reviewss_schema = ReviewSchema(many=True,strict=True)
-
-#TODO run db.create_all() in python shell (from models import db)
