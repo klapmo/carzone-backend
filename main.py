@@ -20,16 +20,14 @@ def addReview():
 @app.route('/reviews', methods=['GET'])
 def get_reviews():
     all_reviews = Review.query.all()
-    result = reviews_schema.dump(all_products) # dump is part of Marshmallow
-
+    result = reviews_schema.dump(all_reviews) # dump is part of Marshmallow
     return jsonify(result.data)
 
 # Retrieve (GET) single review
 @app.route('/reviews/<id>', methods=['GET'])
 def get_review(id):
     review = Review.query.get(id)
-
-    return review_schema.jsonify(product)
+    return review_schema.jsonify(review)
 
 # Update a review (inside of our database)
 @app.route('/reviews/<id>', methods=['PUT'])
@@ -46,20 +44,20 @@ def update_review(id):
 
     db.session.commit()
 
-    return review_schema.jsonify(product)
+    return review_schema.jsonify(review)
 
 # Delete review
 @app.route('/reviews/<id>', methods=['DELETE'])
 def delete_product(id):
     review = Review.query.get(id)
 
-    db.session.delete(product)
+    db.session.delete(review)
     db.session.commit()
 
-    return review_schema.jsonify(product)
+    return review_schema.jsonify(review)
 #Create API Route for Creating Cars
-@app.route('/Cars',methods=['POST'])
-def add_product():
+@app.route('/cars',methods=['POST'])
+def add_car():
     make = request.json['make']
     model = request.json['model']
     price = request.json['price']
@@ -69,7 +67,7 @@ def add_product():
     mileage = request.json['mileage']
 
     #init cars with info
-    new_car = Product(make,model,price,body_type,color,image,mileage)
+    new_car = Car(make,model,price,body_type,color,image,mileage)
 
     db.session.add(new_car)
     db.session.commit()
@@ -77,22 +75,22 @@ def add_product():
     return cars_schema.jsonify(new_car)
 
 #GET All Cars
-@app.route('/Cars',methods=["GET"])
-def get_products():
+@app.route('/cars',methods=["GET"])
+def get_car():
     all_cars = Cars.query.all()
     result = cars_schema.dump(new_car)
     return jsonify(result.data)
 
 #GET Single Car
-@app.route('/Cars/<id>',methods=["GET"])
-def get_product(id):
-    cars = Cars.query.get(id)
-    return cars_schema.jsonify(cars)
+@app.route('/cars/<id>',methods=["GET"])
+def get_car(id):
+    car = Cars.query.get(id)
+    return car_schema.jsonify(cars)
 
-#Update Cars
-@app.route('/product/<id>',methods=["PUT"])
-def update_product(id):
-    cars = Cars.query.get(id)
+#Update a Car
+@app.route('/cars/<id>',methods=["PUT"])
+def update_car(id):
+    car = Cars.query.get(id)
 
     make = request.json['make']
     model = request.json['model']
@@ -102,26 +100,26 @@ def update_product(id):
     image = request.json['image']
     mileage = request.json['mileage']
 
-    cars.make = make
-    cars.model = model
-    cars.price = price
-    cars.body_type = body_type
-    cars.color = color
-    cars.image = image
-    cars.mileage = mileage
+    car.make = make
+    car.model = model
+    car.price = price
+    car.body_type = body_type
+    car.color = color
+    car.image = image
+    car.mileage = mileage
 
     db.session.commit()
 
-    return cars_schema.jsonify(cars)
+    return car_schema.jsonify(car)
 
 #Delete Cars
-@app.route('/Cars/<id>',methods=["DELETE"])
-def delete_product(id):
-    cars = Cars.query.get(id)
-    db.session.delete(cars)
+@app.route('/cars/<id>',methods=["DELETE"])
+def delete_car(id):
+    car = Cars.query.get(id)
+    db.session.delete(car)
     db.session.commit()
 
-    return cars_schema.jsonify(cars)
+    return car_schema.jsonify(car)
 
 
 if __name__ == '__main__':
