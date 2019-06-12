@@ -72,4 +72,10 @@ class ReviewSchema(ma.Schema): # ma is Marshmallow instantiation as seen above
         fields = ('id', 'name', 'rating', 'message') # fields is a property of Schema 
 
 review_schema = ReviewSchema(strict=True) # strict = True is to avoid warnings in console
+<<<<<<< HEAD
 reviewss_schema = ReviewSchema(many=True,strict=True)
+=======
+reviews_schema = ReviewSchema(many=True,strict=True)
+
+#TODO run db.create_all() in python shell (from models import db)
+>>>>>>> ed4bc67455ea0b969b80fe23119bc39997a0fac4
