@@ -1,9 +1,5 @@
 import app
 
-<<<<<<< HEAD
-"""This area for Venus -- /car CRUD"""
-
-"""This area for Richard -- /review CRUD"""
 # Create API route for creating product
 # Create Review
 @app.route('/reviews', methods=['POST'])
@@ -61,7 +57,6 @@ def delete_product(id):
     db.session.commit()
 
     return review_schema.jsonify(product)
-=======
 #Create API Route for Creating Cars
 @app.route('/Cars',methods=['POST'])
 def add_product():
@@ -127,7 +122,7 @@ def delete_product(id):
     db.session.commit()
 
     return cars_schema.jsonify(cars)
->>>>>>> fc67546ac7d473e14577be5c9c06214931af3d02
+
 
 if __name__ == '__main__':
     app.app.run(debug=True)
