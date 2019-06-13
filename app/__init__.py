@@ -1,9 +1,7 @@
 from flask import Flask
 
-from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+app = Flask(__name__)
 
-
-
-
-
-# TODO Add input for routes and models when models is created
+cors = CORS(app,resources = {"/cars":{"origins":"*"}})
+cors = CORS(app,resources = {"/reviews": {"origins":"*"}})
