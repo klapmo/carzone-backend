@@ -2,6 +2,8 @@ from app import app
 from flask import Flask, request, jsonify
 from models import Car,Review,db,cars_schema,car_schema,review_schema,reviews_schema
 
+
+app = Flask(__name__)
 # Create API route for creating product
 # Create Review
 @app.route('/reviews', methods=['POST'])
