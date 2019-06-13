@@ -1,5 +1,6 @@
 from app import app
-from models import Car,Review
+from flask import Flask, request, jsonify
+from models import Car,Review,db,cars_schema,car_schema,review_schema,reviews_schema
 
 # Create API route for creating product
 # Create Review
@@ -73,25 +74,25 @@ def add_car():
     db.session.add(new_car)
     db.session.commit()
 
-    return cars_schema.jsonify(new_car)
+    return car_schema.jsonify(new_car)
 
 #GET All Cars
 @app.route('/cars',methods=["GET"])
 def get_cars():
-    all_cars = Cars.query.all()
-    result = cars_schema.dump(new_car)
+    all_cars = Car.query.all()
+    result = cars_schema.dump(all_cars)
     return jsonify(result.data)
 
 #GET Single Car
 @app.route('/cars/<id>',methods=["GET"])
 def get_car(id):
-    car = Cars.query.get(id)
+    car = Car.query.get(id)
     return car_schema.jsonify(cars)
 
 #Update a Car
 @app.route('/cars/<id>',methods=["PUT"])
 def update_car(id):
-    car = Cars.query.get(id)
+    car = Car.query.get(id)
 
     make = request.json['make']
     model = request.json['model']
@@ -116,7 +117,7 @@ def update_car(id):
 #Delete Cars
 @app.route('/cars/<id>',methods=["DELETE"])
 def delete_car(id):
-    car = Cars.query.get(id)
+    car = Car.query.get(id)
     db.session.delete(car)
     db.session.commit()
 

@@ -4,14 +4,14 @@ from flask_marshmallow import Marshmallow
 import os
 from app import app
 
-# Init App
 
-app = Flask(__name__)
+
+
 basedir = os.path.abspath(os.path.dirname(__file__)) #Considers your OS and finds the base path so it can work across machines
 
 # Database Config
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://akbkozrj:XgCf78t_z7wqYBT-xSQtldUvlVz0opRq@otto.db.elephantsql.com:5432/akbkozrj" 
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://akbkozrj:mDvAjqNCeDyzp3aQrFCzfQQn2jsEXuS5@otto.db.elephantsql.com:5432/akbkozrj" 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize our Database
