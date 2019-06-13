@@ -73,9 +73,4 @@ class ReviewSchema(ma.Schema): # ma is Marshmallow instantiation as seen above
 
 review_schema = ReviewSchema(strict=True) # strict = True is to avoid warnings in console
 reviews_schema = ReviewSchema(many=True,strict=True)
-<<<<<<< HEAD
-
-#TODO run db.create_all() in python shell (from models import db)
-=======
->>>>>>> ed4bc67455ea0b969b80fe23119bc39997a0fac4
 

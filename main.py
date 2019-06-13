@@ -1,4 +1,4 @@
-import app
+from app import app
 from models import Car,Review
 
 # Create API route for creating product
@@ -77,7 +77,7 @@ def add_car():
 
 #GET All Cars
 @app.route('/cars',methods=["GET"])
-def get_car():
+def get_cars():
     all_cars = Cars.query.all()
     result = cars_schema.dump(new_car)
     return jsonify(result.data)
@@ -124,4 +124,4 @@ def delete_car(id):
 
 
 if __name__ == '__main__':
-    app.app.run(debug=True)
+    app.run(debug=True)
